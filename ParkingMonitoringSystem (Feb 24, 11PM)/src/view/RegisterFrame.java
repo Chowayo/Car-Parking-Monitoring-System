@@ -175,7 +175,6 @@ public class RegisterFrame extends javax.swing.JFrame {
  
         if(! pass.getText().equals("") &&! Repass.getText().equals("") && ! fname.getText().equals("") && ! lname.getText().equals("") && ! email.getText().equals("")){
             if(pass.getText().equals(Repass.getText())){
-                System.out.println("THEY MATCH");
                 user.setFname(fname.getText()); 
                 user.setLname(lname.getText());
                 user.setEmail(email.getText());
