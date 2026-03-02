@@ -17,10 +17,18 @@ CREATE TABLE parking (
 );
 
 
+main_parking table:
 
-
-
-
+CREATE TABLE main_parking (
+    id INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    plate VARCHAR(20) NOT NULL,
+    vehicle VARCHAR(50) NOT NULL,
+    price DECIMAL(10,2) NOT NULL DEFAULT 0.00,
+    slot VARCHAR(20) NOT NULL,
+    time_in DATETIME DEFAULT NULL,
+    time_out DATETIME DEFAULT NULL,
+    status ENUM('available', 'occupied') NOT NULL DEFAULT 'available'
+);
 
 Insert on main_parking: 
 
@@ -56,9 +64,24 @@ VALUES
 ('E6'), ('E7'), ('E8'), ('E9'), ('E10'), 
 ('E11'), ('E12'), ('E13'), ('E14'), ('E15');
 
-
-
 INSERT INTO main_parking (slot)
 VALUES ('PWD1'),('PWD2'),('PWD3'),('PWD4');
+
+
+
+
+log_parking table:
+
+CREATE TABLE log_parking (
+    id INT(11) NOT NULL AUTO_INCREMENT,
+    plate VARCHAR(255) COLLATE utf8mb4_general_ci NOT NULL,
+    vehicle VARCHAR(255) COLLATE utf8mb4_general_ci NOT NULL,
+    price INT(11) NOT NULL,
+    slot VARCHAR(255) COLLATE utf8mb4_general_ci NOT NULL,
+    time_in DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    time_out DATETIME DEFAULT NULL,
+    PRIMARY KEY (id)
+);
+
 
 
