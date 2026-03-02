@@ -1,0 +1,36 @@
+
+Feb 24 2026:
+
+Needs:
+
+1. Dapat nag c-check muna sa DB kung present na yung employee before inserting 
+
+2. Apply password Encryptor for register (/)
+
+3. Pang verify ng email
+
+4. Apply password encryptor for login (/)
+
+5. 8 Digit password (/)
+
+6. Signin error kapag walang laman yung textfield sa loginframe (/)
+
+
+
+
+System update (Feb 25):
+
+1. Encryptor for Register
+
+2. Encryptor for Login
+
+3. Login textboxes must contain something for function to happen
+
+4. Password now must be atleast 8 characters long
+
+5. Session Creating (Saving login information)
+
+6. (DEMO) View employee Information (With password decryptor)
+
+7. (DEMO) Edit employee Information (With password encrypt/decrypt)
+
