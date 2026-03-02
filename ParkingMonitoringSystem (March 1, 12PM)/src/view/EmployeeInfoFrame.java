@@ -9,7 +9,7 @@ public class EmployeeInfoFrame extends javax.swing.JFrame {
 
     public EmployeeInfoFrame() {
         initComponents();
-        employeeId_label.setText("First Name: "+LoginFrame.id);
+        employeeId_label.setText("First Name: "+LoginFrame.employeeID);
         fname_label.setText("First Name: "+LoginFrame.firstname);
         lname_label.setText("Last Name: "+LoginFrame.lastname);
         email_label.setText("Email: "+LoginFrame.email);

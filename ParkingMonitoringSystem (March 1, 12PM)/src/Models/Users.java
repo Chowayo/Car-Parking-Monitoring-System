@@ -1,8 +1,17 @@
 package Models;
 
 public class Users {
-    private String fname, lname, email, password;
-    private int employeeID;
+    private String fname, lname, email, password, employeeID;
+    private int id;
+    
+
+    public String getEmployeeID() {
+        return employeeID;
+    }
+
+    public void setEmployeeID(String employeeID) {
+        this.employeeID = employeeID;
+    }
 
     public String getFname() {
         return fname;
@@ -36,13 +45,15 @@ public class Users {
         this.password = password;
     }
 
-    public int getEmployeeID() {
-        return employeeID;
+    public int getId() {
+        return id;
     }
 
-    public void setEmployeeID(int employeeID) {
-        this.employeeID = employeeID;
+    public void setId(int id) {
+        this.id = id;
     }
+    
+   
     
 }
 

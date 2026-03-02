@@ -10,7 +10,7 @@ public class LoginFrame extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(LoginFrame.class.getName());
 
-    public static String firstname, lastname, email, password;
+    public static String employeeID, firstname, lastname, email, password;
     public static int id;
     public LoginFrame() {
         
@@ -62,8 +62,9 @@ public class LoginFrame extends javax.swing.JFrame {
         }
     
       
-    public LoginFrame(String first_name, String last_name , String email, String password, int id) {
+    public LoginFrame(String employeeID,String first_name, String last_name , String email, String password, int id) {
         this();
+        this.employeeID = employeeID;
         this.firstname = first_name;
         this.lastname = last_name;
         this.email = email;
@@ -263,7 +264,7 @@ public class LoginFrame extends javax.swing.JFrame {
     //SPACER
     private void signInBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signInBtnActionPerformed
        
-        String id = loginEmployeeID.getText();
+        String employeeId = loginEmployeeID.getText();
         String passw = loginPassword.getText();
         UserController usercon = new UserController(); //Creating objects
         
@@ -277,12 +278,12 @@ public class LoginFrame extends javax.swing.JFrame {
         password_convert = usercon.convert(password_convert, encrypt_2, encrypt_1); //Encryptor 2
         password_convert = usercon.convert(password_convert, encrypt_3, encrypt_2); //Encryptor 3
         
-        if(!id.equals("") && !passw.equals("") && !id.equals("Employee ID") && !passw.equals("Password")){
+        if(!employeeId.equals("") && !passw.equals("")){
             
             try {
-                int int_id = Integer.parseInt(id); // Convert ID to integer safely
+                int int_id = Integer.parseInt(employeeId); // Convert ID to integer safely
 
-                if(usercon.authenticate(id, password_convert) != null){ 
+                if(usercon.authenticate(employeeId, password_convert) != null){ 
                     
                     // Session Logic
                     List<Users> session = usercon.session(int_id, password_convert);
@@ -291,16 +292,17 @@ public class LoginFrame extends javax.swing.JFrame {
                         this.lastname = user.getLname();
                         this.email = user.getEmail();
                         this.password = user.getPassword();
-                        this.id = user.getEmployeeID();
+                        this.id = user.getId();
+                        this.employeeID = user.getEmployeeID();
                     }
                     
-                    JOptionPane.showMessageDialog(this, "Welcome Admin"); 
+                    JOptionPane.showMessageDialog(this, "Login Successful"); 
                     
                     //MICHAEL NOTE: Hindi pa sure kung nagana to CHOW: NAGANA NA
                     Preferences prefs = Preferences.userNodeForPackage(LoginFrame.class);
                     if (rememberMe.isSelected()) {
                         // Save the username and password
-                        prefs.put("savedUsername", id);
+                        prefs.put("savedUsername", employeeId);
                         prefs.put("savedPassword", passw); 
                         prefs.putBoolean("rememberMe", true);
                     } else {

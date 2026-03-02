@@ -11,26 +11,49 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class UserController {
     
     public void register(Users user){ 
-        String query = "INSERT INTO employees(first_name, last_name, email, password) values" //User is the table name
-                + "(?,?,?,?)";   
+        String query = "INSERT INTO employees(employeeID, first_name, last_name, email, password) values" //User is the table name
+                + "(?,?,?,?,?)";
+        
         try (Connection conn = DBConnection.getConnection();
          PreparedStatement ps = conn.prepareStatement(query)){
             
-           
-            ps.setString(1, user.getFname()); 
-            ps.setString(2, user.getLname()); 
-            ps.setString(3, user.getEmail()); 
-            ps.setString(4, user.getPassword()); 
+            ps.setString(1, user.getEmployeeID());
+            ps.setString(2, user.getFname()); 
+            ps.setString(3, user.getLname()); 
+            ps.setString(4, user.getEmail()); 
+            ps.setString(5, user.getPassword()); 
             
             ps.executeUpdate();
+            
         
         } catch (SQLException e){
             e.printStackTrace(); //Output if the value is not inserted in the table or try had an error
         }  
     }
+    
+    
+    public String verify(String employeeID, String email){ //NO EMAIL OR EMPLOYEEID repeat
+        String sql = "SELECT * FROM employees"; //Is the SQL syntax for system to run 
+        String error_counter = "no_error";
+        try (Connection conn = DBConnection.getConnection();
+         PreparedStatement ps = conn.prepareStatement(sql)){
+            ResultSet rs = ps.executeQuery(); 
+            while(rs.next()){
+                    if(employeeID.equals(rs.getString("employeeID")) || email.equals(rs.getString("email"))){
+                        error_counter = "Error";
+                    }              
+            }
+        } catch(Exception e){
+            e.printStackTrace();
+            
+        }
+        return error_counter;
+    }
+    
     
     
     public Users authenticate(String employeeID, String password){
@@ -46,15 +69,14 @@ public class UserController {
             
             ResultSet rs = ps.executeQuery(); 
             
+            
             if(rs.next()){ 
                 Users user = new Users();
-                user.setFname(rs.getString("EmployeeID"));
-                user.setLname(rs.getString("EmployeeID"));
-                user.setEmail(rs.getString("EmployeeID"));
-                user.setEmployeeID(rs.getInt("EmployeeID")); 
-                user.setPassword(rs.getString("EmployeeID")); 
+                user.setEmployeeID(rs.getString("employeeID"));
+                user.setPassword(rs.getString("password")); 
                 return user; 
             }
+
 
         } catch(Exception e){
             e.printStackTrace();
@@ -95,7 +117,8 @@ public class UserController {
             
             try(ResultSet resultset = ps.executeQuery()){
                 if(resultset.next()){
-                    user.setEmployeeID(resultset.getInt("employeeID"));
+                    user.setId(resultset.getInt("id"));
+                    user.setEmployeeID(resultset.getString("employeeID"));
                     user.setFname(resultset.getString("first_name"));
                     user.setLname(resultset.getString("last_name"));
                     user.setEmail(resultset.getString("email"));
