@@ -85,3 +85,62 @@ CREATE TABLE log_parking (
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+NEW CODES HERE March 5:
+
+
+CREATE TABLE log_parking (
+    id INT(11) NOT NULL AUTO_INCREMENT,
+    plate VARCHAR(255) NOT NULL,
+    vehicle VARCHAR(255) NOT NULL,
+    price INT(11) NOT NULL,
+    extra_fee DOUBLE NOT NULL DEFAULT 0,
+    slot VARCHAR(255) NOT NULL,
+    time_in DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    time_out DATETIME NULL DEFAULT NULL,
+    payment DOUBLE NOT NULL DEFAULT 0,
+    keep_change DOUBLE NOT NULL DEFAULT 0,
+    PRIMARY KEY (id)
+);
+
+
+
+CREATE TABLE main_parking (
+    id INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    plate VARCHAR(255) NOT NULL DEFAULT 'empty',
+    vehicle VARCHAR(255) NOT NULL DEFAULT 'empty',
+    price INT(11) NOT NULL DEFAULT 0,
+    extra_fee DOUBLE NOT NULL DEFAULT 0,
+    slot VARCHAR(255) NOT NULL DEFAULT 'empty',
+    time_in DATETIME NULL DEFAULT NULL,
+    time_out DATETIME NULL DEFAULT NULL,
+    status VARCHAR(255) NOT NULL DEFAULT 'available',
+    payment DOUBLE NOT NULL DEFAULT 0,
+    keep_change DOUBLE NOT NULL DEFAULT 0
+);
+
+
+
+
+
+
+
+
+
+
+
+
