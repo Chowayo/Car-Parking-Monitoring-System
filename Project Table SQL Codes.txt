@@ -71,7 +71,7 @@ INSERT INTO main_parking (slot)
 VALUES ('PWD1'),('PWD2'),('PWD3'),('PWD4');
 
 
-
+CODE FROM March 6:
 
 log_parking table:
 
@@ -138,6 +138,7 @@ CREATE TABLE main_parking (
     payment DOUBLE NOT NULL DEFAULT 0,
     keep_change DOUBLE NOT NULL DEFAULT 0
 );
+
 
 
 
