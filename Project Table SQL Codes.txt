@@ -21,15 +21,18 @@ main_parking table:
 
 CREATE TABLE main_parking (
     id INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    plate VARCHAR(20) NOT NULL,
-    vehicle VARCHAR(50) NOT NULL,
-    price DECIMAL(10,2) NOT NULL DEFAULT 0.00,
-    slot VARCHAR(20) NOT NULL,
+    plate VARCHAR(255) NOT NULL DEFAULT 'empty',
+    vehicle VARCHAR(255) NOT NULL DEFAULT 'empty',
+    price INT(11) NOT NULL DEFAULT 0,
+    extra_fee DOUBLE NOT NULL DEFAULT 0,
+    slot VARCHAR(255) NOT NULL DEFAULT 'empty',
+    occupant VARCHAR(255) DEFAULT 'empty',
     time_in DATETIME DEFAULT NULL,
     time_out DATETIME DEFAULT NULL,
-    status ENUM('available', 'occupied') NOT NULL DEFAULT 'available'
+    status VARCHAR(255) NOT NULL DEFAULT 'available',
+    payment DOUBLE NOT NULL DEFAULT 0,
+    keep_change DOUBLE NOT NULL DEFAULT 0
 );
-
 Insert on main_parking: 
 
 
@@ -73,14 +76,17 @@ VALUES ('PWD1'),('PWD2'),('PWD3'),('PWD4');
 log_parking table:
 
 CREATE TABLE log_parking (
-    id INT(11) NOT NULL AUTO_INCREMENT,
-    plate VARCHAR(255) COLLATE utf8mb4_general_ci NOT NULL,
-    vehicle VARCHAR(255) COLLATE utf8mb4_general_ci NOT NULL,
+    id INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    plate VARCHAR(255) NOT NULL,
+    vehicle VARCHAR(255) NOT NULL,
     price INT(11) NOT NULL,
-    slot VARCHAR(255) COLLATE utf8mb4_general_ci NOT NULL,
+    extra_fee DOUBLE NOT NULL DEFAULT 0,
+    slot VARCHAR(255) NOT NULL,
+    occupant VARCHAR(255) NOT NULL DEFAULT 'empty',
     time_in DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    time_out DATETIME DEFAULT NULL,
-    PRIMARY KEY (id)
+    time_out DATETIME NULL DEFAULT NULL,
+    payment DOUBLE NOT NULL DEFAULT 0,
+    keep_change DOUBLE NOT NULL DEFAULT 0
 );
 
 
@@ -132,6 +138,7 @@ CREATE TABLE main_parking (
     payment DOUBLE NOT NULL DEFAULT 0,
     keep_change DOUBLE NOT NULL DEFAULT 0
 );
+
 
 
 
