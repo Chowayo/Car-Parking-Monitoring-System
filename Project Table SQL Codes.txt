@@ -90,11 +90,11 @@ For insert in admin:
 
 INSERT INTO admin (employeeID, first_name, last_name, email, password) 
 VALUES 
-('2024-60153', 'John Michael', 'Nuqui', 'Michael@gmail.com', '3CTe5DF9'),
-('2024-60224', 'Chowxinn Shanin', 'Lu', 'Shanin@gmail.com', '3CTe5DF9'),
-('2024-58359', 'Luz Vivian', 'Cantos', 'Vivian@gmail.com', '3CTe5DF9'),
-('2024-59205', 'Sophia Alexandra', 'Isla', 'Alexandra@gmail.com', '3CTe5DF9'),
-('2024-59223', 'Maybelle', 'Dellamas', 'Maybelle@gmail.com', '3CTe5DF9');
+('202460153', 'John Michael', 'Nuqui', 'Michael@gmail.com', '3CTe5DF9'),
+('202460224', 'Chowxinn Shanin', 'Lu', 'Shanin@gmail.com', '3CTe5DF9'),
+('202458359', 'Luz Vivian', 'Cantos', 'Vivian@gmail.com', '3CTe5DF9'),
+('202459205', 'Sophia Alexandra', 'Isla', 'Alexandra@gmail.com', '3CTe5DF9'),
+('202459223', 'Maybelle', 'Dellamas', 'Maybelle@gmail.com', '3CTe5DF9');
 
 
 
@@ -131,6 +131,7 @@ CREATE TABLE main_parking (
     payment DOUBLE NOT NULL DEFAULT 0,
     keep_change DOUBLE NOT NULL DEFAULT 0
 );
+
 
 
 
