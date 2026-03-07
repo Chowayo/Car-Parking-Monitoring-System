@@ -4,19 +4,6 @@ Employees table:
 CREATE TABLE employees (id INT PRIMARY KEY AUTO_INCREMENT, employeeID VARCHAR(255), first_name VARCHAR(255), last_name VARCHAR(255), email VARCHAR(255), password VARCHAR(255));
 
 
-Parking table:
-
-CREATE TABLE parking (
-    id INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    plate VARCHAR(255) NOT NULL,
-    vehicle VARCHAR(255) NOT NULL,
-    price INT(11) NOT NULL,
-    slot VARCHAR(255) NOT NULL,
-    time_in DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    time_out DATETIME NULL DEFAULT NULL
-);
-
-
 main_parking table:
 
 CREATE TABLE main_parking (
@@ -112,6 +99,7 @@ VALUES
 ('202458359', 'Luz Vivian', 'Cantos', 'Vivian@gmail.com', '3CTe5DF9'),
 ('202459205', 'Sophia Alexandra', 'Isla', 'Alexandra@gmail.com', '3CTe5DF9'),
 ('202459223', 'Maybelle', 'Dellamas', 'Maybelle@gmail.com', '3CTe5DF9');
+
 
 
 
