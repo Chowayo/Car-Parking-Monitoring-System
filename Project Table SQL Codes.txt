@@ -33,6 +33,23 @@ CREATE TABLE main_parking (
     payment DOUBLE NOT NULL DEFAULT 0,
     keep_change DOUBLE NOT NULL DEFAULT 0
 );
+
+log_parking table:
+
+CREATE TABLE log_parking (
+    id INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    plate VARCHAR(255) NOT NULL,
+    vehicle VARCHAR(255) NOT NULL,
+    price INT(11) NOT NULL,
+    extra_fee DOUBLE NOT NULL DEFAULT 0,
+    slot VARCHAR(255) NOT NULL,
+    occupant VARCHAR(255) NOT NULL DEFAULT 'empty',
+    time_in DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    time_out DATETIME NULL DEFAULT NULL,
+    payment DOUBLE NOT NULL DEFAULT 0,
+    keep_change DOUBLE NOT NULL DEFAULT 0
+);
+
 Insert on main_parking: 
 
 
@@ -98,21 +115,8 @@ VALUES
 
 
 
-log_parking table:
 
-CREATE TABLE log_parking (
-    id INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    plate VARCHAR(255) NOT NULL,
-    vehicle VARCHAR(255) NOT NULL,
-    price INT(11) NOT NULL,
-    extra_fee DOUBLE NOT NULL DEFAULT 0,
-    slot VARCHAR(255) NOT NULL,
-    occupant VARCHAR(255) NOT NULL DEFAULT 'empty',
-    time_in DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    time_out DATETIME NULL DEFAULT NULL,
-    payment DOUBLE NOT NULL DEFAULT 0,
-    keep_change DOUBLE NOT NULL DEFAULT 0
-);
+
 
 
 
